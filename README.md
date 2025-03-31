@@ -38,7 +38,7 @@ Namma Yatri is a SQL Server-based project aimed at analyzing ride-sharing trips 
 ## Sample Queries
 
 ### 1.Which area got the highest fares, cancellations,trips
-
+```sql
 select * from
 (select * , rank() over(order by total_fare desc) rnk
 from
@@ -53,17 +53,19 @@ from
 select loc_from,COUNT(*)-sum(driver_not_cancelled) as cnt from trips_details
 group by loc_from)b)c
 where rnk=1
-
+```
 
 ### 2.Which driver , customer pair had more orders
+```sql
 select * from
 (select *,rank() over(order by cnt desc) rnk from
 (select driverid,custid,COUNT(distinct tripid) cnt from trips
 group by driverid,custid)b)c
 where rnk=1
 
-
+```
 ### 3.which is the most used payment method 
+```sql
 select a.method from payment a
 INNER JOIN
   (select top 1 faremethod,count(faremethod) as n from trips
@@ -72,12 +74,13 @@ INNER JOIN
    ON 
    a.id=b.faremethod;
 
-   
+```   
 ### 4. Top 5 earning drivers   
+```sql
 select top 5 driverid,sum(fare),COUNT(driverid) from trips
 group by driverid
 order by SUM(fare) desc;
-
+```
 ## Future Enhancements
 
 - Integration with real-time analytics.
