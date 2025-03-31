@@ -16,7 +16,7 @@ Namma Yatri is a SQL Server-based project aimed at analyzing ride-sharing trips 
 ## Installation
 ### 1. Clone the repository:
   ```bash```
-  git clone https://github.com/yourusername/namma-yatri.git
+  git clone https://github.com/TayalKirti701/Namma_yatri.git
 ###2. Navigate to the project directory:
   ```bash```
   cd namma-yatri
